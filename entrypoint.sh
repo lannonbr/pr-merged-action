@@ -7,7 +7,7 @@ if [ -z "$GITHUB_EVENT_PATH" ]; then
   exit 1
 fi
 
-expected="$0"
+expected="$1"
 actual=$(jq -r .merged "$GITHUB_EVENT_PATH")
 
 echo "PR: $actual" | grep -Eq "^$expected$" || {
