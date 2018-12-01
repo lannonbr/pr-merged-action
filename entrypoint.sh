@@ -8,7 +8,7 @@ if [ -z "$GITHUB_EVENT_PATH" ]; then
 fi
 
 expected="$1"
-actual=$(jq -r .merged "$GITHUB_EVENT_PATH")
+actual=$(jq -r .pull_request.merged "$GITHUB_EVENT_PATH")
 
 echo "PR: $actual" | grep -Eq "^$expected$" || {
   echo "PR expected to be \"$expected\" but ended up being \"$actual\". Failing..."
