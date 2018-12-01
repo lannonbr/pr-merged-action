@@ -10,7 +10,7 @@ fi
 expected="$1"
 actual=$(jq -r .pull_request.merged "$GITHUB_EVENT_PATH")
 
-echo "PR: $actual" | grep -Eq "^$expected$" || {
+echo "PR: $actual" | grep -Eq "$expected$" || {
   echo "PR expected to be \"$expected\" but ended up being \"$actual\". Failing..."
   exit 78
 }
